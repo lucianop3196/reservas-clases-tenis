@@ -1,0 +1,30 @@
+body {
+    background-color: #77FF44;
+}
+.principal {
+  top: 100px;
+  height: 1000px;
+}
+h1 {
+  width: 100%;
+}
+#reservation {
+    height: 65vh;
+}
+
+#classReservation{
+  background-color: inherit;
+  border: none;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 50%;
+}
+.contactForm__input {
+  padding: 10px;
+  margin: 10px;
+}
+.logInMessage {
+  padding-top: 50px;
+}
+footer{
+    bottom: 0;
+}
