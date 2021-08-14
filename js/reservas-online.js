@@ -232,7 +232,9 @@ classReservation.onclick = () => {
     const closeButtons = document.getElementsByClassName("closeButtons");
     for (let close of closeButtons) {
       close.onclick = () => {
-        window.history.go(-1);
+        window.history.go(
+          "file:///C:/Users/Luciano%20Pennacchioni/Desktop/Curso%20JavaScript/Proyecto%20final%20JavaScript/reservas%20clases%20tenis/index.html"
+        );
       };
     }
     console.log(window.history);
