@@ -2,33 +2,33 @@
     "jugadores": [
         {
             "name":"Luciano",
-            "age":"24",
-            "category":"2°"
+            "email":"wedew",
+            "mobile":"dwedew"
         },
         {
             "name":"Joaquín",
-            "age":"21",
-            "category":"3°"
+            "email":"edwed",
+            "mobile":"ewdew"
         },
         {
             "name":"Mariano",
-            "age":"35",
-            "category":"1°"
+            "email":"edwed",
+            "mobile":"dwed"
         },
         {
             "name":"Agustina",
-            "age":"25",
-            "category":"4°"
+            "email":"weded",
+            "mobile":"wedwed"
         },
         {
             "name":"Julian",
-            "age":"19",
-            "category":"3°"
+            "email":"wddew",
+            "mobile":"edwed"
         },
         {
             "name":"Romina",
-            "age":"27",
-            "category":"1°"
+            "email":"sddad",
+            "mobile":"asdsd"
         }
     ]
 }

@@ -291,6 +291,7 @@ loginButton.onclick = () => {
         />
         <div class="buttons col-xs-12 col-sm-6 text-right">
           <input
+            id="inputSubmit"
             class="contactForm__submit"
             type="submit"
             value="Envíar"
@@ -319,7 +320,6 @@ loginButton.onclick = () => {
     sessionStorage.setItem("mobile", inputMobil.value);
     console.log(sessionStorage);
   };
-
   let contactForm = document.getElementById("contactForm");
   contactForm.addEventListener("submit", formValidation);
   function formValidation(e) {
@@ -329,4 +329,26 @@ loginButton.onclick = () => {
       "name"
     )}! Te registraste exitosamente</p>`;
   }
+  // // // Uso del servidor fake
+  // let infoPost = {
+  //   name: "hola",
+  //   email: "como",
+  //   mobile: "estas?",
+  // };
+  // let infoPostJSON = JSON.stringify(infoPost);
+  // console.log(infoPostJSON);
+  // let submitButton = document.getElementById("inputSubmit");
+  // submitButton.onclick = () => {
+  //   $.ajax({
+  //     data: infoPostJSON,
+  //     type: "POST",
+  //     url: "http://localhost:3000/jugadores",
+  //     success: dataProcess,
+  //   });
+  //   function dataProcess(respuesta, estado) {
+  //     if (estado === "success") {
+  //       alert("hola");
+  //     }
+  //   }
+  // };
 };

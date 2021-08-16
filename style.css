@@ -1,5 +1,10 @@
 body {
-    background-color: #77FF44;
+  background-color: #77ff44;
+  background-image: url("https://images.unsplash.com/photo-1554068865-24cecd4e34b8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-position-y: 50px;
 }
 .principal {
   top: 100px;
@@ -7,16 +12,21 @@ body {
 }
 h1 {
   width: 100%;
+  color: #000000;
+  font-size: 3rem;
+}
+#randomHello {
+  font-size: 1.5rem;
 }
 #reservation {
-    height: 65vh;
+  height: 65vh;
 }
-
-#classReservation{
-  background-color: inherit;
-  border: none;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  width: 50%;
+#classReservation {
+  display: block;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-left: 15px;
 }
 .contactForm__input {
   padding: 10px;
@@ -25,6 +35,6 @@ h1 {
 .logInMessage {
   padding-top: 50px;
 }
-footer{
-    bottom: 0;
+footer {
+  bottom: 0;
 }
