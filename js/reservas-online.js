@@ -83,9 +83,13 @@ const classReservation = document.getElementById("classReservation");
 const reservation = document.getElementById("reservation");
 const principal = document.getElementsByClassName("principal");
 classReservation.onclick = () => {
+  document.getElementById("timetable").className += "m-5 p-5";
   reservation.style.display = "none";
   const bookingInformation = document.createElement("div");
-  bookingInformation.innerHTML = `  <div class="row">
+  bookingInformation.innerHTML = ` 
+  
+  <p>Seleccioná dia y horario que desees reservar</p>
+  <div class="row">
   <p class="col-sm">Lunes</p>
   <p class="col-sm">Martes</p>
   <p class="col-sm">Miércoles</p>
@@ -329,26 +333,29 @@ loginButton.onclick = () => {
       "name"
     )}! Te registraste exitosamente</p>`;
   }
-  // // // Uso del servidor fake
-  // let infoPost = {
-  //   name: "hola",
-  //   email: "como",
-  //   mobile: "estas?",
-  // };
-  // let infoPostJSON = JSON.stringify(infoPost);
-  // console.log(infoPostJSON);
-  // let submitButton = document.getElementById("inputSubmit");
-  // submitButton.onclick = () => {
-  //   $.ajax({
-  //     data: infoPostJSON,
-  //     type: "POST",
-  //     url: "http://localhost:3000/jugadores",
-  //     success: dataProcess,
-  //   });
-  //   function dataProcess(respuesta, estado) {
-  //     if (estado === "success") {
-  //       alert("hola");
-  //     }
-  //   }
-  // };
 };
+
+$("#botonPrueba").click(() => {
+  $(".principal, footer").animate({
+    height: "toggle",
+  });
+  $.get(
+    "http://hp-api.herokuapp.com/api/characters",
+    function (respuesta, estado) {
+      if (estado === "success") {
+        let misDatos = respuesta;
+        $("body").prepend(
+          `<h2 class="mt-5 pt-5">A continuación te listamos los jugadores del próximo torneo:</h2>`
+        );
+        for (let i = 0; i < misDatos.length; i++) {
+          let player = misDatos[i].name;
+          $("body").append(
+            `<div>
+            <p>Jugador ${i + 1}: ${player}</p>
+          </div>`
+          );
+        }
+      }
+    }
+  );
+});
