@@ -36,6 +36,22 @@ signUpButton.onclick = () => {
           placeholder="Número de celular/teléfono*"
           required
         />
+        <input
+          class="signUpForm__input col-xs-12 col-sm-12"
+          id="inputUserName"
+          type="text"
+          name="username"
+          placeholder="Usuario*"
+          required
+        />
+        <input
+          class="signUpForm__input col-xs-12 col-sm-12"
+          id="inputPassword"
+          type="password"
+          name="password"
+          placeholder="Contraseña*"
+          required
+        />
         <div class="buttons col-xs-12 col-sm-6 text-right">
           <input
             id="inputSubmit"
@@ -67,6 +83,14 @@ signUpButton.onclick = () => {
     sessionStorage.setItem("mobile", inputMobil.value);
     console.log(sessionStorage);
   };
+  inputUserName.onchange = () => {
+    sessionStorage.setItem("username", inputUserName.value);
+    console.log(sessionStorage);
+  };
+  inputPassword.onchange = () => {
+    sessionStorage.setItem("password", inputPassword.value);
+    console.log(sessionStorage);
+  };
   let signUpForm = document.getElementById("signUpForm");
   signUpForm.addEventListener("submit", formValidation);
   function formValidation(e) {
@@ -75,12 +99,14 @@ signUpButton.onclick = () => {
     signUpSection.innerHTML = `<p class="signUpMessage">Felicitaciones ${sessionStorage.getItem(
       "name"
     )}! Te registraste exitosamente</p>`;
+    $("#loginButton").show();
   }
 };
 
 //Boton para ingresar con usuario y contraseña
 let loginButton = document.getElementById("loginButton");
 loginButton.onclick = () => {
+  $(".signUpMessage").hide();
   $("#signUpButton").hide();
   $("#loginButton").hide();
   loginSection = document.createElement("div");
@@ -91,7 +117,7 @@ loginButton.onclick = () => {
     </legend>
     <input
       class="loginForm__input col-xs-12 col-sm-12"
-      id="inputUserName"
+      id="loginUserName"
       type="text"
       name="userName"
       placeholder="Usuario*"
@@ -99,7 +125,7 @@ loginButton.onclick = () => {
       />
       <input
         class="loginForm__input col-xs-12 col-sm-12"
-        id="inputPassword"
+        id="loginPassword"
         type="password"
         name="password"
         placeholder="Contraseña*"
@@ -121,20 +147,31 @@ loginButton.onclick = () => {
   </fieldset>
 </form>`;
   document.body.appendChild(loginSection);
-  const inputUserName = document.getElementById("inputUserName");
-  const inputPassword = document.getElementById("inputPassword");
-  inputUserName.onchange = () => {
-    sessionStorage.setItem("username", inputUserName.value)
-  }
-  inputPassword.onchange = () => {
-    sessionStorage.setItem("password", inputPassword.value)
-  }
+  const loginUserName = document.getElementById("loginUserName");
+  const loginPassword = document.getElementById("loginPassword");
+  loginUserName.onchange = () => {
+    sessionStorage.setItem("loginUserName", loginUserName.value);
+  };
+  loginPassword.onchange = () => {
+    sessionStorage.setItem("loginPassword", loginPassword.value);
+  };
   let loginForm = document.getElementById("loginForm");
   loginForm.addEventListener("submit", loginValidation);
   function loginValidation(e) {
     e.preventDefault();
-    $(".welcome").hide();
-    $("#loginForm").hide();
-    $("#bodyContainer").show();
+    if (
+      sessionStorage.getItem("loginUserName") ===
+        sessionStorage.getItem("username") &&
+      sessionStorage.getItem("loginPassword") ===
+        sessionStorage.getItem("password")
+    ) {
+      $(".welcome").hide();
+      $("#loginForm").hide();
+      $("#bodyContainer").show();
+    } else {
+      alert("El usuario y/o la contraseña son incorrectos");
+    }
   }
 };
+
+console.log(sessionStorage);
