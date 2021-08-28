@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema de reservas online</title>
-
     <!-- link iconos font-awesome -->
     <script
       src="https://kit.fontawesome.com/8921e939a0.js"
@@ -33,10 +32,13 @@
     <link rel="stylesheet" type="text/css" href="normalize.css" />
     <!--link css -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
   </head>
   <body class="container">
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <nav class="navbar navbar-expand-lg fixed-top">
         <a href="index.html"><p class="navbar-brand">Diego rivera</p></a>
         <button
           class="navbar-toggler"
@@ -47,7 +49,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+        <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
@@ -63,10 +65,14 @@
         </div>
       </nav>
     </header>
+    <button type="button" class="btn btn-secondary" id="signUpButton">
+      Registrarse
+    </button>
+    <button type="button" class="btn btn-secondary" id="loginButton">
+      Ingresar
+    </button>
+    <div id="bodyContainer">
     <section class="principal position-relative">
-      <button type="button" class="btn btn-secondary" id="loginButton">
-        Ingresar
-      </button>
       <div id="up">
         <h1 class="text-center m-5 p-2">
           Sistemas de reservas online de clases de tenis
@@ -104,8 +110,10 @@
           ></a>
         </p>
       </div>
+    </div>
     </footer>
     <!-- Link a archivo JS -->
     <script src="js/reservas-online.js"></script>
+    <script src="js/login.js"></script>
   </body>
 </html>
