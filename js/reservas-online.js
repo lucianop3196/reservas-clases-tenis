@@ -32,7 +32,6 @@ let hello = [
   "Buenas! Bienvenido al sistema de reservas online de clases de tenis, a continuación se le pedirán una serie de datos para completar su registro",
   "Buenas! Hoy es un excelente dia para jugar al tenis :D",
   "Hola! Te esperamos para jugar!! Recorda que si reservas mas de 3 clases hay descuento ;)",
-  "Hola hola, ya no se me ocurre que carajo poner jeje",
   "Copate y venite a jugar con nosotros, reserva una clase!",
 ];
 const randomItem = (items) => {
@@ -52,8 +51,9 @@ players.push(new Client("Romina", "27", "1°"));
 
 // Almacenamiento del array de jugadores
 const playersJSON = JSON.stringify(players);
-console.log(playersJSON);
 sessionStorage.setItem("Array de jugadores", playersJSON);
+
+
 
 // Ordenamiento de Array por categoría con función sort()
 players.sort(function (a, b) {
@@ -332,28 +332,3 @@ loginButton.onclick = () => {
     )}! Te registraste exitosamente</p>`;
   }
 };
-
-$("#botonPrueba").click(() => {
-  $(".principal, footer").animate({
-    height: "toggle",
-  });
-  $.get(
-    "http://hp-api.herokuapp.com/api/characters",
-    function (respuesta, estado) {
-      if (estado === "success") {
-        let misDatos = respuesta;
-        $("body").prepend(
-          `<h2 class="mt-5 pt-5">A continuación te listamos los jugadores del próximo torneo:</h2>`
-        );
-        for (let i = 0; i < misDatos.length; i++) {
-          let player = misDatos[i].name;
-          $("body").append(
-            `<div>
-            <p>Jugador ${i + 1}: ${player}</p>
-          </div>`
-          );
-        }
-      }
-    }
-  );
-});
