@@ -53,8 +53,6 @@ players.push(new Client("Romina", "27", "1°"));
 const playersJSON = JSON.stringify(players);
 sessionStorage.setItem("Array de jugadores", playersJSON);
 
-
-
 // Ordenamiento de Array por categoría con función sort()
 players.sort(function (a, b) {
   if (a.category > b.category) {
@@ -231,19 +229,20 @@ classReservation.onclick = () => {
   bookingButton.onclick = () => {
     costCalculation(individualClassPrice, groupClassPrice, discount);
     const summary = document.createElement("p");
+    summary.className = "summary";
     summary.innerHTML = `¿Desea confirmar la reserva? <br>${individualClasses} clases, total a abonar: $${finalPrice}`;
     document.getElementById("modal-body").appendChild(summary);
     const closeButtons = document.getElementsByClassName("closeButtons");
     for (let close of closeButtons) {
       close.onclick = () => {
-        location.reload();
+        document.getElementById("modal-body").innerHTML = ``;
+        $("#nextButton").show();
       };
     }
-    console.log(window.history);
     const nextButton = document.getElementById("nextButton");
     nextButton.onclick = () => {
       players[1].pay();
-      nextButton.style.display = "none";
+      $("#nextButton").hide();
       let confirmButton = document.getElementById("confirmForm");
       confirmButton.addEventListener("submit", validateForm);
       function validateForm(e) {

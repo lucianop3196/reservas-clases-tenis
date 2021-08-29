@@ -16,9 +16,13 @@ body {
   height: 1000px;
 }
 p,
-.signUpForm__legend,.loginForm__legend {
+.signUpForm__legend,.loginForm__legend, #randomHello {
   font-size: 1.2rem;
   color: #fefaff;
+  font-family: "Poppins", sans-serif;
+}
+.summary {
+  color: #110A19;
   font-family: "Poppins", sans-serif;
 }
 h1 {
