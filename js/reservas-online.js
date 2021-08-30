@@ -237,6 +237,13 @@ classReservation.onclick = () => {
       close.onclick = () => {
         document.getElementById("modal-body").innerHTML = ``;
         $("#nextButton").show();
+        individualClasses = 0;
+        selectMonday.value = "No seleccionar"; 
+        selectTuesday.value = "No seleccionar"; 
+        selectWednesday.value = "No seleccionar"; 
+        selectThursday.value = "No seleccionar"; 
+        selectFriday.value = "No seleccionar"; 
+        selectSaturday.value = "No seleccionar"; 
       };
     }
     const nextButton = document.getElementById("nextButton");
