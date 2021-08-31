@@ -10,6 +10,7 @@ body {
 .welcome {
   position: relative;
   top: 130px;
+  left: -600px;
 }
 .principal {
   top: 100px;
@@ -51,6 +52,7 @@ h2 {
 #timetable select {
   background-color: transparent;
   border: #272127 5px double;
+  color: #FEFAFF;
 }
 #timetable select option {
   background-color: #272127;
@@ -66,6 +68,7 @@ h2 {
 #signUpButton, #loginButton {
   position: relative;
   top: 250px;
+  display: none;
 }
 .signUpMessage {
   position: relative;
