@@ -167,11 +167,20 @@ loginButton.onclick = () => {
     ) {
       $(".welcome").hide();
       $("#loginForm").hide();
-      $("#bodyContainer").show();
-    } else {
+      $("#bodyContainer").fadeIn(2000);
+    } 
+    else if (sessionStorage.getItem("username")==null || sessionStorage.getItem("password")==null) {
+      alert("Necesitas registrarte para poder ingresar");
+    }
+    else {
       alert("El usuario y/o la contraseña son incorrectos");
     }
   }
 };
+
+//Animations
+$(".welcome").animate({left:"0px"}, 1500);
+$("#loginButton, #signUpButton").fadeIn(3000);
+
 
 console.log(sessionStorage);

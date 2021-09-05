@@ -86,8 +86,8 @@ classReservation.onclick = () => {
   const bookingInformation = document.createElement("div");
   bookingInformation.innerHTML = ` 
   
-  <p>Seleccioná dia y horario que desees reservar</p>
-  <div class="row">
+  <p class="timetable__p">Seleccioná dia y horario que desees reservar</p>
+  <div class="row timetable__div-days">
   <p class="col-sm">Lunes</p>
   <p class="col-sm">Martes</p>
   <p class="col-sm">Miércoles</p>
@@ -95,9 +95,9 @@ classReservation.onclick = () => {
   <p class="col-sm">Viernes</p>
   <p class="col-sm">Sábado</p>
 </div>
-<div class="row">
+<div class="row timetable__div-select">
   <select
-    name="mondayReservation"
+    name="lunes"
     id="mondayReservation"
     class="col-sm bookingForm"
   >
@@ -108,7 +108,7 @@ classReservation.onclick = () => {
     <option value="11">11:00 hs</option>
   </select>
   <select
-    name="tuesdayReservation"
+    name="martes"
     id="tuesdayReservation"
     class="col-sm bookingForm"
   >
@@ -119,7 +119,7 @@ classReservation.onclick = () => {
     <option value="11">11:00 hs</option>
   </select>
   <select
-    name="wednesdayReservation"
+    name="miercoles"
     id="wednesdayReservation"
     class="col-sm bookingForm"
   >
@@ -130,7 +130,7 @@ classReservation.onclick = () => {
     <option value="11">11:00 hs</option>
   </select>
   <select
-    name="thursdayReservation"
+    name="jueves"
     id="thursdayReservation"
     class="col-sm bookingForm"
   >
@@ -141,7 +141,7 @@ classReservation.onclick = () => {
     <option value="11">11:00 hs</option>
   </select>
   <select
-    name="fridayReservation"
+    name="viernes"
     id="fridayReservation"
     class="col-sm bookingForm"
   >
@@ -152,7 +152,7 @@ classReservation.onclick = () => {
     <option value="11">11:00 hs</option>
   </select>
   <select
-    name="saturdayReservation"
+    name="sabado"
     id="saturdayReservation"
     class="col-sm bookingForm"
   >
@@ -172,7 +172,7 @@ classReservation.onclick = () => {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Tu reserva</h5>
         <button type="button" class="close closeButtons" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -182,12 +182,14 @@ classReservation.onclick = () => {
       <div class="modal-footer" id="modal-footer">
         <button type="button" class="btn btn-secondary closeButtons" data-dismiss="modal">Cerrar</button>
         <button type="button" id="nextButton" class="btn btn-primary">Siguiente</button>
+        <button type="button" id="clearOutButton" class="btn btn-primary">Vaciar</button>
       </div>
     </div>
   </div>
 </div>`;
   document.getElementById("timetable").appendChild(bookingInformation);
   const bookingButton = document.getElementById("bookingButton");
+  const clearOutButton = document.getElementById("clearOutButton");
   const selectMonday = document.getElementById("mondayReservation");
   const selectTuesday = document.getElementById("tuesdayReservation");
   const selectWednesday = document.getElementById("wednesdayReservation");
@@ -195,57 +197,81 @@ classReservation.onclick = () => {
   const selectFriday = document.getElementById("fridayReservation");
   const selectSaturday = document.getElementById("saturdayReservation");
   // Método onchange para contar la cantidad de clases reservadas
+  var daysReserved = [];
+  var timeReserved = [];
   selectMonday.onchange = () => {
     if (selectMonday.value != "No seleccionar") {
       individualClasses++;
+      daysReserved.push(selectMonday.name);
+      timeReserved.push(selectMonday.value);
     }
   };
   selectTuesday.onchange = () => {
     if (selectTuesday.value != "No seleccionar") {
       individualClasses++;
+      daysReserved.push(selectTuesday.name);
+      timeReserved.push(selectTuesday.value);
     }
   };
   selectWednesday.onchange = () => {
     if (selectWednesday.value != "No seleccionar") {
       individualClasses++;
+      daysReserved.push(selectWednesday.name);
+      timeReserved.push(selectWednesday.value);
     }
   };
   selectThursday.onchange = () => {
     if (selectThursday.value != "No seleccionar") {
       individualClasses++;
+      daysReserved.push(selectThursday.name);
+      timeReserved.push(selectThursday.value);
     }
   };
   selectFriday.onchange = () => {
     if (selectFriday.value != "No seleccionar") {
       individualClasses++;
+      daysReserved.push(selectFriday.name);
+      timeReserved.push(selectFriday.value);
     }
   };
   selectSaturday.onchange = () => {
     if (selectSaturday.value != "No seleccionar") {
       individualClasses++;
+      daysReserved.push(selectSaturday.name);
+      timeReserved.push(selectSaturday.value);
     }
   };
+
   // Botones para reservar los horarios seleccionados
   bookingButton.onclick = () => {
     costCalculation(individualClassPrice, groupClassPrice, discount);
     const summary = document.createElement("p");
     summary.className = "summary";
-    summary.innerHTML = `¿Desea confirmar la reserva? <br>${individualClasses} clases, total a abonar: $${finalPrice}`;
+    summary.innerHTML = `¿Desea confirmar la reserva? <br>${individualClasses} clases: <br>`;
+    for (let i = 0; i < daysReserved.length; i++) {
+      summary.innerHTML += `- ${daysReserved[i]} a las ${timeReserved[i]} <br>`;
+    }
+    summary.innerHTML += `Total a abonar: $${finalPrice}`;
     document.getElementById("modal-body").appendChild(summary);
     const closeButtons = document.getElementsByClassName("closeButtons");
     for (let close of closeButtons) {
       close.onclick = () => {
         document.getElementById("modal-body").innerHTML = ``;
         $("#nextButton").show();
-        individualClasses = 0;
-        selectMonday.value = "No seleccionar"; 
-        selectTuesday.value = "No seleccionar"; 
-        selectWednesday.value = "No seleccionar"; 
-        selectThursday.value = "No seleccionar"; 
-        selectFriday.value = "No seleccionar"; 
-        selectSaturday.value = "No seleccionar"; 
       };
     }
+    clearOutButton.onclick = () => {
+      individualClasses = 0;
+      summary.innerHTML = `¿Desea confirmar la reserva? <br>${individualClasses} clases, total a abonar: $0`;
+      selectMonday.value = "No seleccionar";
+      selectTuesday.value = "No seleccionar";
+      selectWednesday.value = "No seleccionar";
+      selectThursday.value = "No seleccionar";
+      selectFriday.value = "No seleccionar";
+      selectSaturday.value = "No seleccionar";
+      daysReserved = [];
+      timeReserved = [];
+    };
     const nextButton = document.getElementById("nextButton");
     nextButton.onclick = () => {
       players[1].pay();
@@ -254,8 +280,15 @@ classReservation.onclick = () => {
       confirmButton.addEventListener("submit", validateForm);
       function validateForm(e) {
         e.preventDefault();
-        document.getElementById("payment").innerHTML =
-          "<p>Tu pago ha sido procesado exitosamente</p>";
+        if (creditCardInfo.value != "" && creditCardInfo.value.length == "16") {
+          document.getElementById(
+            "payment"
+          ).innerHTML = `<p>Tu pago ha sido procesado exitosamente</p>`;
+        } else {
+          document.getElementById(
+            "payment"
+          ).innerHTML = `<p>Ingrese todos los números sin espacios de una tarjeta de crédito/débito válida</p>`;
+        }
       }
     };
   };
