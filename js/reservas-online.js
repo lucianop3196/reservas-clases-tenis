@@ -250,7 +250,7 @@ classReservation.onclick = () => {
     summary.className = "summary";
     summary.innerHTML = `¿Desea confirmar la reserva? <br>${individualClasses} clases: <br>`;
     for (let i = 0; i < daysReserved.length; i++) {
-      summary.innerHTML += `- ${daysReserved[i]} a las ${timeReserved[i]} <br>`;
+      summary.innerHTML += `- ${daysReserved[i]} a las ${timeReserved[i]}:00 hs <br>`;
     }
     summary.innerHTML += `Total a abonar: $${finalPrice}`;
     document.getElementById("modal-body").appendChild(summary);
