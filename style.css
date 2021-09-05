@@ -22,13 +22,15 @@ body {
   height: 1000px;
 }
 p,
-.signUpForm__legend,.loginForm__legend, #randomHello {
+.signUpForm__legend,
+.loginForm__legend,
+#randomHello {
   font-size: 1.2rem;
   color: #fefaff;
   font-family: "Poppins", sans-serif;
 }
 .summary {
-  color: #110A19;
+  color: #110a19;
   font-family: "Poppins", sans-serif;
 }
 h1 {
@@ -36,7 +38,6 @@ h1 {
   color: #fefaff;
   font-size: 3rem;
   font-family: "Poppins", sans-serif;
-  
 }
 h2 {
   color: #fefaff;
@@ -57,20 +58,33 @@ h2 {
 #timetable select {
   background-color: transparent;
   border: #272127 5px double;
-  color: #FEFAFF;
+  color: #fefaff;
 }
 #timetable select option {
   background-color: #272127;
   color: #fff8b6;
 }
-#signUpForm, #loginForm {
+#signUpForm,
+#loginForm {
   top: 300px;
 }
-.signUpForm__input, .loginForm__input {
-  padding: 10px;
+.signUpForm__input,
+.loginForm__input {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+  background: inherit;
+  border: 1px solid #220059;
+  color: #fefaff;
+  padding: 6px 12px;
   margin: 10px;
 }
-#signUpButton, #loginButton {
+.signUpForm__input:hover,
+.loginForm__input:hover {
+  border: 1px solid #f216cb;
+}
+#signUpButton,
+#loginButton {
   position: relative;
   top: 250px;
   display: none;
@@ -82,39 +96,63 @@ h2 {
 footer {
   bottom: 0;
 }
-
-#payment, #payment p{
+#payment,
+#payment p {
   font-size: 1.2rem;
   color: black;
-  font-family: "Poppins", sans-serif
+  font-family: "Poppins", sans-serif;
 }
 /* Animación de sección timetable  */
-.timetable__p,.timetable__div-days,.timetable__div-select, #bookingButton{
-opacity: 0;
-animation-name: bounceIn;
-animation-duration: 450ms;
-animation-timing-function: linear;
-animation-fill-mode: forwards;
+.timetable__p,
+.timetable__div-days,
+.timetable__div-select,
+#bookingButton {
+  opacity: 0;
+  animation-name: bounceIn;
+  animation-duration: 450ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
-.timetable__div-days {animation-delay: 0.75s;}
-.timetable__div-select {animation-delay: 1s;}
-#bookingButton {animation-delay: 1.15s;}
+.timetable__div-days {
+  animation-delay: 0.75s;
+}
+.timetable__div-select {
+  animation-delay: 1s;
+}
+#bookingButton {
+  animation-delay: 1.15s;
+}
 
-@keyframes bounceIn{
-  0%{
+@keyframes bounceIn {
+  0% {
     opacity: 0;
-    transform: scale(0.3) translate3d(0,0,0);
+    transform: scale(0.3) translate3d(0, 0, 0);
   }
-  50%{
+  50% {
     opacity: 0.9;
     transform: scale(1.1);
   }
-  80%{
+  80% {
     opacity: 1;
     transform: scale(0.89);
   }
-  100%{
+  100% {
     opacity: 1;
-    transform: scale(1) translate3d(0,0,0);
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+/* Versión mobile */
+@media only screen and (max-width: 767px) {
+  p,
+  #randomHello,
+  #myReservation {
+    font-size: 0.8rem;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  h2 {
+    font-size: 1.2rem;
   }
 }

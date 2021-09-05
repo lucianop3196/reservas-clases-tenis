@@ -84,6 +84,7 @@ classReservation.onclick = () => {
   document.getElementById("timetable").className += "m-5 p-5";
   reservation.style.display = "none";
   const bookingInformation = document.createElement("div");
+  bookingInformation.className ="grid-container"
   bookingInformation.innerHTML = ` 
   
   <p class="timetable__p">Seleccioná dia y horario que desees reservar</p>
